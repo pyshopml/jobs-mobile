@@ -10,6 +10,12 @@ const scenes = {
     props,
     component: Vacancies
   }),
+  vacancyDetail: (props: {postId: number}, title?: string):IScene  => ({
+    key: `vacancyDetail?id=${props.postId}`,
+    title: title || 'Вакансия',
+    props,
+    component: VacancyDetail
+  })
 }
 
 
