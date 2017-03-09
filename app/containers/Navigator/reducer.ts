@@ -2,7 +2,7 @@ import {
   PUSH_SCENE,
   POP_SCENE
 } from './constants';
-import scenes from '../../scenes';
+import scenes from 'scenes';
 import {NavigationExperimental} from 'react-native';
 const {StateUtils: NavigationStateUtils,} = NavigationExperimental;
 

@@ -9,6 +9,7 @@
     "rootDir": "app",
     "jsx": "react",
     "allowJs": true,
+    "baseUrl": "app",
     "allowUnreachableCode": true,
     "typeRoots": [
       "node_modules/@types"

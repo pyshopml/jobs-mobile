@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pushScene, popScene } from './actions';
-import IScene from '../../types/scene.interface';
+import IScene from 'types/scene.interface';
 import selectors from './selectors';
 import { NavigationExperimental, BackAndroid } from 'react-native';
 
