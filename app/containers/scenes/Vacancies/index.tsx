@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import autobind from 'autobind-decorator'
 import { connect } from 'react-redux';
 import { ListView } from 'react-native';
 
@@ -16,6 +17,7 @@ interface State {
   dataSource: any
 };
 
+@autobind
 class Vacancies extends Component<Props, State> {
   constructor(props) {
     super(props);
@@ -24,7 +26,6 @@ class Vacancies extends Component<Props, State> {
         rowHasChanged: (row1, row2) => row1 !== row2,
       })
     };
-    this.loadMore = this.loadMore.bind(this);
   }
   componentWillReceiveProps(newProps){
     this.setState({
@@ -34,7 +35,6 @@ class Vacancies extends Component<Props, State> {
   componentDidMount() {
     this.props.loadPosts();
   }
-
   loadMore() {
     this.props.loadMorePosts()
   }

@@ -10,6 +10,7 @@
     "jsx": "react",
     "allowJs": true,
     "baseUrl": "app",
+    "experimentalDecorators": true,
     "allowUnreachableCode": true,
     "typeRoots": [
       "node_modules/@types"
