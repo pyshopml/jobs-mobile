@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "outDir": "ts_dist",
+    "rootDir": "app",
+    "jsx": "react",
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "filesGlob": [
+    "app/**/*.js",
+    "app/**/*.jsx",
+    "app/**/*.ts",
+    "app/**/*.tsx"
+  ],
+  "exclude": [
+  	"index.android.js",
+    "index.ios.js",
+    "__tests__",
+    "ts_dist",
+    "node_modules"
+  ]
+}

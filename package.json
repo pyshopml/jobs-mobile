@@ -1,0 +1,42 @@
+{
+  "name": "jobsMobile",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "tsc:build": "tsc",
+    "tsc:watch": "tsc --watch",
+    "test": "jest",
+    "link": "node node_modules/react-native/local-cli/cli.js link",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios"
+  },
+  "dependencies": {
+    "draft-js": "^0.10.0",
+    "react": "15.4.2",
+    "react-dom": "^15.4.2",
+    "react-native": "0.42.0",
+    "react-native-material-design": "^0.3.7",
+    "react-native-vector-icons": "^4.0.0",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/draft-js": "^0.9.1",
+    "@types/react": "^15.0.14",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.36",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/reselect": "^2.0.27",
+    "babel-jest": "19.0.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "15.4.2",
+    "typescript": "^2.2.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
