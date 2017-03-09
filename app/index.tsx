@@ -1,13 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Provider } from 'react-redux';
+import configStore from './store';
 
-interface Props {};
-interface State {};
+import App from './containers/App';
 
-class Main extends React.Component<Props, State> {
+const store = configStore({});
+
+class Main extends React.Component<null, null> {
   render() {
     return (
-      <Text>Main</Text>	
+      <Provider store={store}>
+        <App/>
+      </Provider>
     )
   }
 }
