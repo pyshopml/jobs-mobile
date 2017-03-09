@@ -25,6 +25,10 @@ class App extends Component<Props, null> {
     this.refs.drawer.openDrawer()
   };
   renderNavigationView(){
+    const {index, routes} = this.props.navigationState;
+    return <Navigation routeKey={routes[index].key}
+                       pushScene={this.props.pushScene}
+                       popScene={this.props.popScene}/>
   }
   render() {
     return (
