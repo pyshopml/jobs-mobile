@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import autobind from 'autobind-decorator';
 import { connect } from 'react-redux';
 import { pushScene, popScene } from './actions';
 import IScene from 'types/scene.interface';
 import selectors from './selectors';
 import { NavigationExperimental, BackAndroid } from 'react-native';
+
+import Header from './components/Header'
 
 const { CardStack: NavigationCardStack } = NavigationExperimental;
 
@@ -12,10 +15,12 @@ interface Props {
   popScene();
   navigationState: any;
   pushScene(scene: IScene);
+  openDrawer();
 };
 interface State {};
 
-class Navigator extends Component<Props, State> {
+@autobind
+class SceneNavigator extends Component<Props, State> {
   getChildContext() {
     return {
       popScene: this.props.popScene,
@@ -42,6 +47,11 @@ class Navigator extends Component<Props, State> {
       <SceneComponent {...props}/>
     )
   }
+  renderHeader(sceneProps){
+    return (
+      <Header onIconPress={this.props.openDrawer} title={sceneProps.scene.route.title}/>
+    )
+  }
   render() {
     return (
     <NavigationCardStack onNavigateBack={this.props.popScene}
@@ -49,6 +59,7 @@ class Navigator extends Component<Props, State> {
                          direction={'horizontal'}
                          scenesStyle={{marginTop: 56}}
                          gestureResponseDistance={100}
+                         renderHeader={this.renderHeader}
                          renderScene={this.renderScene}/>
     );
   }
@@ -61,4 +72,4 @@ const mapDispatchToProps = dispatch => ({
   pushScene: (scene: IScene) => dispatch(pushScene(scene))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigator);
+export default connect(mapStateToProps, mapDispatchToProps)(SceneNavigator);

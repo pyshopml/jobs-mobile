@@ -3,12 +3,12 @@ import { Snackbar } from 'react-native-material-design';
 import { connect } from 'react-redux';
 import selectors from './selectors';
 
-import Navigator from '../Navigator';
+import SceneNavigator from '../SceneNavigator';
 
 class App extends Component<null, null> {
   render() {
     return (
-      <Navigator/>
+      <SceneNavigator/>
     );
   }
 }

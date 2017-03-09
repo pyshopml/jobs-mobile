@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import appReducer from './containers/App/reducer';
-import navigatorReducer from './containers/Navigator/reducer';
+import navigatorReducer from './containers/SceneNavigator/reducer';
 import vacanciesReducer from './containers/scenes/Vacancies/reducer';
 import vacancyDetailReducer from './containers/scenes/VacancyDetail/reducer';
 
