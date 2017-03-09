@@ -12,9 +12,9 @@ const { CardStack: NavigationCardStack } = NavigationExperimental;
 
 
 interface Props {
-  popScene();
-  navigationState: any;
-  pushScene(scene: IScene);
+  popScene?();
+  navigationState?: any;
+  pushScene?(scene: IScene);
   openDrawer();
 };
 interface State {};
@@ -65,7 +65,7 @@ class SceneNavigator extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = state => selectors(state);
+const mapStateToProps = (state, ownProps: Props) => selectors(state);
 
 const mapDispatchToProps = dispatch => ({
   popScene: () => dispatch(popScene()),

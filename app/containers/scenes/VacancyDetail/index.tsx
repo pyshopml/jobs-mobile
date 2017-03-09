@@ -11,8 +11,8 @@ import selectors from './selectors';
 import style from './style';
 
 interface Props {
-  openedPost: IPost;
-  loadPost(id: number);
+  openedPost?: IPost;
+  loadPost?(id: number);
   postId: number
 }
 
@@ -49,7 +49,7 @@ class VacancyDetail extends Component<Props, State> {
   }
 };
 
-const mapStateToProps = state => selectors(state);
+const mapStateToProps = (state, ownProps: Props)  => selectors(state);
 
 const mapDispatchToProps = dispatch => ({
   loadPost: (id: number) => dispatch(loadPost(id))

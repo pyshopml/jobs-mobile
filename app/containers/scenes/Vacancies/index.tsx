@@ -8,9 +8,9 @@ import { loadPosts, loadMorePosts } from './actions';
 import VacancyList from './components/VacancyList';
 
 interface Props {
-  allPosts: any[];
-  loadPosts(): void;
-  loadMorePosts(): void;
+  allPosts?: any[];
+  loadPosts?(): void;
+  loadMorePosts?(): void;
 };
 
 interface State {
@@ -48,7 +48,7 @@ class Vacancies extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = state => selectors(state);
+const mapStateToProps = (state, ownProps: Props)  => selectors(state);
 
 const mapDispatchToProps = dispatch => ({
   loadPosts: () => dispatch(loadPosts()),
