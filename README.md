@@ -4,6 +4,7 @@ Run `npm install` to install the dependencies
 ### Android Requirements
 Follow this guide: http://facebook.github.io/react-native/docs/getting-started.html#android-setup
 ## Running
+First of all run `npm run tsc:build` to compile typescript
 ### Android
 * Open an emulator. (Genymotion or run android avd)
 * Run the `npm run android` in the root of this project.
