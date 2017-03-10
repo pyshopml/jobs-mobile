@@ -10,6 +10,7 @@ import style from './style';
 interface Props {
   routeKey: string;
   pushScene(scene:IScene);
+  closeDrawer();
   popScene();
 };
 
@@ -19,7 +20,7 @@ class Navigation extends React.Component<Props, null> {
     {
       icon: 'view-list',
       value: 'Список',
-      onPress: () => this.props.pushScene(scenes.vacancies()),
+      onPress: () => this.pushScene(scenes.vacancies()),
       active: this.props.routeKey === 'vacancies',
     },
     {
@@ -27,6 +28,10 @@ class Navigation extends React.Component<Props, null> {
       value: 'Создать',
     }
   ])
+  pushScene(scene: IScene){
+    this.props.closeDrawer();
+    this.props.pushScene(scene)
+  }
 
   render() {
     return (
