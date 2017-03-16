@@ -4,6 +4,7 @@ import { Snackbar } from 'react-native-material-design';
 import { connect } from 'react-redux';
 import { DrawerLayoutAndroid } from 'react-native';
 
+import { validateToken } from '../scenes/Auth/actions';
 import { pushScene, popScene } from '../SceneNavigator/actions'
 import selectors from './selectors';
 import IScene from "types/scene.interface";
@@ -14,6 +15,7 @@ interface Props{
   navigationState: any;
   pushScene();
   popScene();
+  validateToken();
 }
 
 @autobind
@@ -21,6 +23,9 @@ class App extends Component<Props, null> {
   refs: {
     drawer: any
   };
+  componentDidMount(){
+    this.props.validateToken()
+  }
   openDrawer(){
     this.refs.drawer.openDrawer()
   };
@@ -50,6 +55,7 @@ class App extends Component<Props, null> {
 const mapStateToProps = state => selectors(state);
 
 const mapDispatchToProps = dispatch => ({
+  validateToken: () => dispatch(validateToken()),
   popScene: () => dispatch(popScene()),
   pushScene: (scene: IScene) => dispatch(pushScene(scene))
 });
