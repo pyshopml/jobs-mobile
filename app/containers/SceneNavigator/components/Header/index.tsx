@@ -7,7 +7,11 @@ import style from './style';
 
 interface Props{
   title: string;
-  onIconPress()
+  onIconPress();
+  action?: {
+    icon: string;
+    onPress(): any
+  }
 };
 
 class Header extends Component<Props, null> {
@@ -16,6 +20,7 @@ class Header extends Component<Props, null> {
       <Toolbar style={style.header}
                onIconPress={this.props.onIconPress}
                title={this.props.title || "JobsMobile"}
+               actions={[this.props.action]}
                icon='menu'
       />
     );
