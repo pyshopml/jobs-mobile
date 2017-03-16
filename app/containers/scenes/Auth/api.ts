@@ -72,7 +72,8 @@ export async function authenticate(data : ILoginCredentials,
     const res = await authenticateOnServer(data);
     if(!res.ok)
       throw new Error(res.statusText);
-    done(res);
+    const result = await res.json();
+    done(result);
   } catch(e) {
     error(e.message);
   }
