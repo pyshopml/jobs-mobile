@@ -2,6 +2,8 @@ import React from 'react';
 import Vacancies from './containers/scenes/Vacancies';
 import Auth from './containers/scenes/Auth';
 import VacancyDetail from './containers/scenes/VacancyDetail';
+import VacancyCreation from './containers/scenes/VacancyCreation';
+
 import IScene from "./types/scene.interface";
 
 const scenes = {
@@ -22,7 +24,13 @@ const scenes = {
     title: props.type == 'signup' ? 'Зарегистрироваться' : 'Войти',
     props,
     component: Auth
-  })
+  }),
+  vacancyCreation: (props?):IScene  => ({
+    key: 'vacancyCreation',
+    title: 'Новая вакансия',
+    props,
+    component: VacancyCreation
+  }),
 }
 
 

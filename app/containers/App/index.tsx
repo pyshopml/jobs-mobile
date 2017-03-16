@@ -16,6 +16,7 @@ interface Props{
   pushScene();
   popScene();
   validateToken();
+  isAuth: boolean;
 }
 
 @autobind
@@ -37,6 +38,7 @@ class App extends Component<Props, null> {
     return <Navigation routeKey={routes[index].key}
                        closeDrawer={this.closeDrawer}
                        pushScene={this.props.pushScene}
+                       isAuth={this.props.isAuth}
                        popScene={this.props.popScene}/>
   }
   render() {
