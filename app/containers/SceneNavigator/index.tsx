@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import autobind from 'autobind-decorator';
 import { connect } from 'react-redux';
-import { pushScene, popScene } from './actions';
-import IScene from 'types/scene.interface';
-import selectors from './selectors';
 import { NavigationExperimental, BackAndroid } from 'react-native';
 
+import { pushScene, popScene } from './actions';
+import { logout } from '../scenes/Auth/actions'
+import IScene from 'types/scene.interface';
+import selectors from './selectors';
+import scenes from 'scenes';
 import Header from './components/Header'
 
 const { CardStack: NavigationCardStack } = NavigationExperimental;
@@ -13,9 +15,11 @@ const { CardStack: NavigationCardStack } = NavigationExperimental;
 
 interface Props {
   popScene?();
+  logout?();
   navigationState?: any;
   pushScene?(scene: IScene);
   openDrawer();
+  isAuth?: boolean;
 };
 interface State {};
 
@@ -49,8 +53,28 @@ class SceneNavigator extends Component<Props, State> {
   }
   renderHeader(sceneProps){
     return (
-      <Header onIconPress={this.props.openDrawer} title={sceneProps.scene.route.title}/>
+      <Header onIconPress={this.props.openDrawer}
+              action={this.getHeaderAction()}
+              title={sceneProps.scene.route.title}/>
     )
+  }
+  getHeaderAction(){
+    const { signIn, signOut } = this.actions;
+    return this.props.isAuth ? signOut : signIn
+  }
+  actions = {
+    signIn: {
+      icon: 'person-outline',
+      onPress: () => {
+        this.props.pushScene(scenes.auth({type: 'signin'}))
+      }
+    },
+    signOut: {
+      icon: 'exit-to-app',
+      onPress: () => {
+        this.props.logout()
+      }
+    }
   }
   render() {
     return (
@@ -68,6 +92,7 @@ class SceneNavigator extends Component<Props, State> {
 const mapStateToProps = (state, ownProps: Props) => selectors(state);
 
 const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
   popScene: () => dispatch(popScene()),
   pushScene: (scene: IScene) => dispatch(pushScene(scene))
 });
