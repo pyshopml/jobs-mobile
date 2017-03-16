@@ -1,8 +1,10 @@
 import { createSelector } from 'reselect';
 
 const selectSubstate = state => state.global.navigator;
+const selectIsAuth = state => state.global.auth.isAuth;
 
 export default createSelector(
   selectSubstate,
-  (substate) => substate
+  selectIsAuth,
+  (substate, isAuth) => ({...substate, isAuth})
 )
