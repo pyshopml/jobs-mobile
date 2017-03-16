@@ -12,6 +12,7 @@ interface Props {
   pushScene(scene:IScene);
   closeDrawer();
   popScene();
+  isAuth: boolean;
 };
 
 @autobind
@@ -21,11 +22,14 @@ class Navigation extends React.Component<Props, null> {
       icon: 'view-list',
       value: 'Список',
       onPress: () => this.pushScene(scenes.vacancies()),
-      active: this.props.routeKey === 'vacancies',
+      active: this.props.routeKey === scenes.vacancies().key,
     },
     {
       icon: 'add-box',
       value: 'Создать',
+      onPress: () => this.pushScene(scenes.vacancyCreation()),
+      active: this.props.routeKey === scenes.vacancyCreation().key,
+      disabled: !this.props.isAuth
     }
   ])
   pushScene(scene: IScene){
